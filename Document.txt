@@ -11,8 +11,4 @@
 
 Branch Edit
 Stash
-<<<<<<< Updated upstream
 Develop Edit
-
-=======
->>>>>>> Stashed changes
