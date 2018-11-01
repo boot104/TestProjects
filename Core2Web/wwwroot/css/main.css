@@ -1,0 +1,212 @@
+/*
+    Imports the Roboto font
+*/
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/roboto/Roboto-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../font/roboto/Roboto-Regular.woff2") format("woff2"), url("../font/roboto/Roboto-Regular.woff") format("woff"), url("../font/roboto/Roboto-Regular.ttf") format("truetype"), url("../font/roboto/Roboto-Regular.svg#svgFontName") format("svg");
+  /* Legacy iOS */ }
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: stretch;
+  font-family: 'Roboto', sans-serif; }
+
+/* Element that is surrounded by the nav elements */
+#body {
+  padding: 20px;
+  overflow: auto; }
+
+/* header of the page */
+header {
+  font-size: 18px;
+  flex-shrink: 0;
+  /* keeps header from getting smaller */
+  background-color: #0D47A1;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  align-content: stretch;
+  height: 50px; }
+  header .header-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+    /* spaces out elements in side the header title */ }
+    header .header-title .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      background: black;
+      text-align: center;
+      width: 260px; }
+    header .header-title > * {
+      margin-right: 10px; }
+  header .nav-button {
+    display: none; }
+  header .main-nav, header .secondary-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    header .main-nav .nav a, header .secondary-nav .nav a {
+      color: rgba(255, 255, 255, 0.87);
+      transition: all .3s; }
+    header .main-nav .nav a:hover:not(.disabled), header .secondary-nav .nav a:hover:not(.disabled) {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1); }
+    header .main-nav .nav a.disabled, header .secondary-nav .nav a.disabled {
+      color: rgba(0, 0, 0, 0.5);
+      cursor: default; }
+  header .main-nav {
+    flex-shrink: 0; }
+  header .secondary-nav {
+    flex-grow: 1;
+    width: 100%;
+    justify-content: flex-end; }
+
+.padded {
+  padding: 12px; }
+
+.std-btn {
+  width: 125px; }
+
+.manufacturer-dashboard {
+  z-index: 0;
+  position: relative; }
+
+.dx-datagrid-content .dx-datagrid-table .dx-row > td, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+  vertical-align: middle; }
+
+.word-wrap {
+  white-space: pre-line; }
+
+@media only screen and (max-width: 1200px) {
+  header {
+    height: 50px;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    header .header-title {
+      height: 50px; }
+    header .nav-button {
+      display: flex;
+      align-items: center;
+      margin-right: 20px; }
+    header .main-nav {
+      width: 100%;
+      background: black;
+      display: none;
+      position: relative;
+      z-index: 100; }
+      header .main-nav .nav {
+        display: block; }
+      header .main-nav .nav a.disabled {
+        color: gray;
+        cursor: default; }
+    header .secondary-nav {
+      width: 100%;
+      background: black;
+      display: none;
+      position: relative;
+      z-index: 100; }
+    header .main-nav.show, header .secondary-nav.show {
+      display: block; } }
+
+.detail-head {
+  flex-shrink: 0;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+  padding: 0px 20px; }
+  .detail-head .detail-head-buttons {
+    margin-bottom: .5rem; }
+  .detail-head h5 {
+    margin-left: 10px;
+    margin-bottom: .76rem; }
+  .detail-head .detail-head-title {
+    display: flex;
+    align-items: flex-end; }
+
+.detail-body {
+  overflow-y: auto;
+  height: 100%; }
+  .detail-body .sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+    border-bottom: 1px solid black;
+    height: 50px; }
+    .detail-body .sub-header h5 {
+      margin: 0; }
+  .detail-body form {
+    max-width: 500px; }
+  .detail-body .large-form {
+    margin-bottom: 50px; }
+    .detail-body .large-form form {
+      max-width: unset; }
+    .detail-body .large-form .dx-fieldset {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; }
+      .detail-body .large-form .dx-fieldset .dx-field {
+        flex: 1 1 500px;
+        margin-right: 10px; }
+      .detail-body .large-form .dx-fieldset .dx-fieldSet {
+        width: 100%; }
+      .detail-body .large-form .dx-fieldset .dx-fieldset {
+        justify-content: center; }
+
+.detail-footer {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px;
+  background: #ECEFF1;
+  padding: 0 20px;
+  border-top: 2px solid rgba(0, 0, 0, 0.2); }
+
+#fileuploader-container {
+  border: 1px solid #d3d3d3;
+  margin: 20px 20px 0 20px;
+  border-radius: 5px; }
+
+.sidebar-layout {
+  display: flex;
+  overflow-y: hidden; }
+  .sidebar-layout .sidebar-layout-sidebar {
+    flex-shrink: 0;
+    width: 260px;
+    overflow: hidden;
+    z-index: 1; }
+    .sidebar-layout .sidebar-layout-sidebar .sidebar-header {
+      height: 50px;
+      display: flex;
+      align-items: flex-end;
+      padding-left: 10px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+      color: rgba(0, 0, 0, 0.87); }
+      .sidebar-layout .sidebar-layout-sidebar .sidebar-header h5 {
+        margin-bottom: 0.76rem; }
+    .sidebar-layout .sidebar-layout-sidebar .sidebar-body {
+      width: 100%; }
+      .sidebar-layout .sidebar-layout-sidebar .sidebar-body .dx-treeview .dx-treeview-search {
+        margin: 5px 5px; }
+      .sidebar-layout .sidebar-layout-sidebar .sidebar-body .custom-link {
+        color: rgba(0, 0, 0, 0.87);
+        display: inline-block;
+        width: 100%;
+        height: 100%; }
+      .sidebar-layout .sidebar-layout-sidebar .sidebar-body .custom-link:hover {
+        color: rgba(128, 128, 128, 0.87); }
+  .sidebar-layout .sidebar-layout-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; }

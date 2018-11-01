@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@4.1.1",
+      "files": [ "css/bootstrap.min.css", "css/bootstrap.min.css.map", "js/bootstrap.min.js", "js/bootstrap.min.js.map" ],
+      "destination": "wwwroot/"
+    },
+    {
+      "library": "jquery@3.3.1",
+      "files": [ "jquery.min.js" ],
+      "destination": "wwwroot/js/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.10",
+      "files": [ "jquery.validate.unobtrusive.min.js" ],
+      "destination": "wwwroot/js/"
+    },
+    {
+      "library": "jquery-validate@1.17.0",
+      "files": [ "jquery.validate.min.js", "additional-methods.min.js" ],
+      "destination": "wwwroot/js/"
+    },
+    {
+      "library": "popper.js@1.14.3",
+      "files": [ "umd/popper.min.js", "umd/popper.min.js.map" ],
+      "destination": "wwwroot/js/"
+    },
+    {
+      "library": "https://cdn3.devexpress.com/jslib/18.1.4/js/dx.all.js",
+      "provider": "filesystem",
+      "destination": "wwwroot/js/"
+    }
+  ]
+}
