@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace DevExtremeAspNetCoreApp1
 {
@@ -18,6 +20,7 @@ namespace DevExtremeAspNetCoreApp1
         }
 
         public IConfiguration Configuration { get; }
+        public static readonly LoggerFactory CoreLoggerFactory = new LoggerFactory(new[] { new ConsoleLoggerProvider((_, __) => true, true) });
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,6 +34,8 @@ namespace DevExtremeAspNetCoreApp1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            CoreLoggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            CoreLoggerFactory.AddDebug();
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

@@ -7,6 +7,7 @@ using DevExtremeAspNetCoreApp1.Models;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DevExtremeAspNetCoreApp1.Controllers {
 
@@ -15,8 +16,10 @@ namespace DevExtremeAspNetCoreApp1.Controllers {
 
         [HttpGet]
         public object Get(DataSourceLoadOptions loadOptions) {
-          
-            return DataSourceLoader.Load(SampleData.Orders, loadOptions);
+
+            Startup.CoreLoggerFactory.CreateLogger("LOGGER").LogInformation("LOAD SALES");
+            var model = SampleData.Orders;
+            return DataSourceLoader.Load(model, loadOptions);
         }
 
     }
