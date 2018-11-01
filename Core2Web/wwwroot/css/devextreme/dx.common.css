@@ -1,7 +1,7 @@
 /*!
 * DevExtreme
-* Version: 18.1.5 (build 18221)
-* Build date: Aug 9, 2018
+* Version: 18.1.6
+* Build date: Sep 3, 2018
 *
 * Copyright (c) 2012 - 2018 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -833,7 +833,7 @@
   flex-grow: 1;
   -webkit-flex-direction: column;
   flex-direction: column;
-  height: auto;
+  height: 0;
 }
 .dx-box-flex .dx-box-item > .dx-scrollable > .dx-scrollable-wrapper,
 .dx-box-flex .dx-box-item-content > .dx-scrollable > .dx-scrollable-wrapper,
@@ -841,10 +841,13 @@
 .dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable-wrapper,
 .dx-box-flex .dx-box-item > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper,
 .dx-box-flex .dx-box-item-content > .dx-treeview > .dx-scrollable > .dx-scrollable-wrapper {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-grow: 1;
   flex-grow: 1;
+  -webkit-flex-direction: column;
   flex-direction: column;
-  height: auto;
+  height: 0;
 }
 .dx-box-flex .dx-box-item > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container,
 .dx-box-flex .dx-box-item-content > .dx-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container,
@@ -4205,8 +4208,6 @@
   visibility: hidden;
   background-color: transparent;
   pointer-events: none;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
 }
 .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table.dx-datagrid-table-fixed .dx-row td.dx-pointer-events-none {
   width: auto;
@@ -4290,12 +4291,6 @@
   -ms-user-select: initial;
   -o-user-select: initial;
   user-select: initial;
-}
-.dx-datagrid .dx-column-lines > td:first-child {
-  border-left: none;
-}
-.dx-datagrid .dx-column-lines > td:last-child {
-  border-right: none;
 }
 .dx-datagrid-column-chooser .dx-overlay-content .dx-popup-title {
   border-bottom: none;
@@ -4903,12 +4898,6 @@ input.dx-hidden {
 .dx-datagrid.dx-rtl .dx-texteditor-buttons-container {
   text-align: start;
 }
-.dx-rtl .dx-datagrid .dx-column-lines > td:first-child {
-  border-right: none;
-}
-.dx-rtl .dx-datagrid .dx-column-lines > td:last-child {
-  border-left: none;
-}
 .dx-rtl .dx-datagrid-content .dx-datagrid-table {
   direction: rtl;
 }
@@ -5163,6 +5152,12 @@ input.dx-hidden {
   position: absolute;
   bottom: 0;
 }
+.dx-pivotgrid .dx-area-description-cell.dx-ie {
+  position: static;
+}
+.dx-pivotgrid .dx-area-description-cell.dx-ie .dx-pivotgrid-fields-area {
+  position: static;
+}
 .dx-pivotgrid .dx-area-field-content {
   display: inline-block;
 }
@@ -5225,23 +5220,53 @@ input.dx-hidden {
   position: relative;
 }
 .dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container {
+  display: -webkit-flex;
   display: flex;
-  flex-direction: row;
-  height: 100%;
   overflow: hidden;
+  height: 100%;
 }
-.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 {
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-0 {
+  -webkit-flex-direction: column;
   flex-direction: column;
 }
-.dx-pivotgridfieldchooser .dx-layout-2 .dx-fields-container {
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 .dx-row:nth-child(1) {
+  -webkit-flex-grow: 3;
+  flex-grow: 3;
+}
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container.dx-layout-2 .dx-row:nth-child(2) {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row;
   flex-direction: row;
   flex-wrap: wrap;
+  -webkit-flex-grow: 4;
+  flex-grow: 4;
 }
 .dx-pivotgridfieldchooser .dx-col {
   width: 50%;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
+}
+.dx-pivotgridfieldchooser .dx-row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  height: 0;
+}
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container .dx-row:nth-child(1) {
+  -webkit-flex-grow: 2;
+  flex-grow: 2;
+}
+.dx-pivotgridfieldchooser .dx-pivotgridfieldchooser-container .dx-row:nth-child(2) {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
 }
 .dx-pivotgridfieldchooser .dx-area-caption {
   vertical-align: middle;
@@ -5282,8 +5307,6 @@ input.dx-hidden {
   visibility: hidden;
   background-color: transparent;
   pointer-events: none;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
 }
 .dx-treelist .dx-treelist-content-fixed .dx-treelist-table.dx-treelist-table-fixed .dx-row td.dx-pointer-events-none {
   width: auto;
@@ -5367,12 +5390,6 @@ input.dx-hidden {
   -ms-user-select: initial;
   -o-user-select: initial;
   user-select: initial;
-}
-.dx-treelist .dx-column-lines > td:first-child {
-  border-left: none;
-}
-.dx-treelist .dx-column-lines > td:last-child {
-  border-right: none;
 }
 .dx-treelist-column-chooser .dx-overlay-content .dx-popup-title {
   border-bottom: none;
@@ -5979,12 +5996,6 @@ input.dx-hidden {
 .dx-rtl .dx-treelist .dx-texteditor-buttons-container,
 .dx-treelist.dx-rtl .dx-texteditor-buttons-container {
   text-align: start;
-}
-.dx-rtl .dx-treelist .dx-column-lines > td:first-child {
-  border-right: none;
-}
-.dx-rtl .dx-treelist .dx-column-lines > td:last-child {
-  border-left: none;
 }
 .dx-rtl .dx-treelist-content .dx-treelist-table {
   direction: rtl;
