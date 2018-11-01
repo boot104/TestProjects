@@ -2,7 +2,7 @@
 @model DevExtremeAspNetCoreApp1.Models.HeaderModel
 <h2>Home</h2>
 
-
+<div>Update Sample code and commit as alone solution</div>
 @(Html.DevExtreme().DataGrid<Order>()
     .ShowBorders(true)
     .DataSource(d => d.Mvc().Controller("Orders").LoadAction("Get").Key("OrderID"))
