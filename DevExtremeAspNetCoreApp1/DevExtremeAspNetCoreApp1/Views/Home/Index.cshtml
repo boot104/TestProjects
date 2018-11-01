@@ -2,33 +2,38 @@
 @model DevExtremeAspNetCoreApp1.Models.HeaderModel
 <h2>Home</h2>
 
+<script>
+    $(document).ready(function () {
+        $("input.input-validation-error").closest(".form-group").addClass("text-danger")
+    })
+</script>
 
-    @(Html.DevExtreme().DataGrid<Order>()
-                            .ShowBorders(true)
-                            .DataSource(d => d.Mvc().Controller("Orders").LoadAction("Get").Key("OrderID"))
-                            .Columns(columns =>
-                            {
-                                columns.AddFor(m => m.OrderID);
-                                columns.AddFor(m => m.OrderDate);
-                                columns.AddFor(m => m.CustomerName).CellTemplate(@<text>
-                                    <a href="@Url.Action("Edit", "Home")/<%= data.OrderID %>">Edit</a>
-                                </text>);
-                                                        columns.AddFor(m => m.ShipCountry);
-                                                        columns.AddFor(m => m.ShipCity);
-                                                    })
-                                                                                .Paging(p => p.PageSize(10))
-                                                                                .FilterRow(f => f.Visible(true))
-                                                                                .HeaderFilter(f => f.Visible(true))
-                                                                                .GroupPanel(p => p.Visible(true))
-                                                                                .Grouping(g => g.AutoExpandAll(false))
-                                                                                .RemoteOperations(true)
-                                                                                .Summary(s => s.TotalItems(totalItems =>
-                                                                                {
-                                                                                    totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
-                                                                                })
-                                                                                    .GroupItems(groupItems =>
-                                                                                    {
-                                                                                        groupItems.Add().SummaryType(SummaryType.Count);
-                                                                                    })
-                                                                                )
-    )
+<form name="f1">
+    <div class="container">
+        <div class="row">
+            <div class="panel">
+                <div class="form-control">@ViewBag.Text</div>
+            </div>
+        </div>
+        @*<div class="row">
+                <div asp-validation-summary="ModelOnly" ></div>
+            </div>*@
+        <div class="form-group">
+            <div class="col-lg-4">
+                <span asp-validation-for="Host"></span>
+                <input class="form-control" type="text" asp-for="Host" />
+            </div>
+            <div class="col-lg-4">
+                <span asp-validation-for="Accept"></span>
+                <input class="form-control" type="text" asp-for="Accept" />
+            </div>
+            <div class="col-lg-4">
+                <span asp-validation-for="UserAgent"></span>
+                <input class="form-control" type="text" asp-for="UserAgent" />
+            </div>
+        </div>
+    </div>
+    <div style="padding:10px;float:right">
+        <button type="submit" class="btn btn-danger">submit</button>
+    </div>
+</form>
