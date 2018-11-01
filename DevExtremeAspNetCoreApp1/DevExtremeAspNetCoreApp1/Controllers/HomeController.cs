@@ -9,12 +9,9 @@ namespace DevExtremeAspNetCoreApp1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index([FromHeader(Name ="accept-Language")] string accept, [FromRoute(Name = "controller")] string t, [FromHeader] HeaderModel model)
-        { 
-            ViewBag.Text = accept;
-            ModelState.AddModelError("Host", "Not Valid - validation from controller");
-             return View(model);
-
+        public IActionResult Index()
+        {
+            return View();
         }
 
     }
