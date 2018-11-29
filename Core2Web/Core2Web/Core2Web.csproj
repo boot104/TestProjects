@@ -8,16 +8,12 @@
     <None Remove="ORMDataModel.xpo.diagram" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.AspNetCore.Bootstrap" Version="18.1.5" />
     <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="18.1.5-ctp" />
     <PackageReference Include="DevExpress.Reporting.Core" Version="18.1.5" />
     <PackageReference Include="DevExpress.Xpo" Version="18.1.5" />
     <PackageReference Include="DevExtreme.AspNet.Core" Version="18.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="2.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

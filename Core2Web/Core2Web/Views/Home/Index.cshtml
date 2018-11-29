@@ -1,37 +1,44 @@
 ﻿@using DevExpress.AspNetCore
 @using DevExpress
 @using DevExpress.XtraReports.UI
-@using DevExpress.DataAccess.Sql;
-@using SqlDataSource = DevExpress.DataAccess.Sql.SqlDataSource;
+@using DevExpress.DataAccess.Sql
+@using Core2Web.Models
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
 
-
-
-<script src="~/js/devexpress-reporting/dist/js/dx-designer.js"></script>
-<script src="~/js/devexpress-reporting/dist/js/report-designer.js"></script>
-<script src="~/js/devexpress-reporting/dist/html/report-designer.html" type="text/htm">
-</script>
-<link href="~/js/devexpress-reporting/dist/css/report-designer-light.min.css" rel="stylesheet" />
-<h3>REPORT DESIGNER</h3>
-@(Html.DevExpress().ReportDesigner("reportDesigner")
-                .Height("1000px")
-                    .DataSources(dataSources =>
-                    {
-                        // Create a SQL data source with the specified connection string.
-                        SqlDataSource ds = new SqlDataSource("NWindConnectionString");
-
-                        // Create a SQL query to access the Products data table.
-                        SelectQuery query = SelectQueryFluentBuilder.AddTable("Products").SelectAllColumnsFromTable().Build("Products");
-                        ds.Queries.Add(query);
-                        ds.RebuildResultSchema();
-
-                        // Add the created data source to the list of default data sources.
-                        dataSources.Add("Northwind", ds);
-                    })
-    //.Bind("DevexpressCoreReportDesigner.Reports.XtraReport.repx")
-)
+@{
+    Html.DevExtreme().PivotGrid<OrderViewModel>()
+        .ID("sample-pivot")
+            .AllowSortingBySummary(true)
+            .AllowSorting(true)
+            .AllowFiltering(true)
+            .AllowExpandAll(true)
+            //.Height(440)
+            .ShowBorders(true)
+            .FieldChooser(c => c.Enabled(true))
+            .FieldPanel(p => p.Visible(true))
+            .FieldPanel(p => p
+            .ShowColumnFields(true)
+            .ShowDataFields(true)
+            .ShowFilterFields(true)
+            .ShowRowFields(true)
+            .AllowFieldDragging(true)
+            .Visible(true))
+            .FieldChooser(c => { c.Height(850); c.Width(800); c.ApplyChangesMode(ApplyChangesMode.Instantly); })
+                .DataSource(d => d
+                .Store(ds => ds.Mvc()
+                .Controller("Home")
+                .LoadAction("GetDatasource")
+                //.LoadMethod("POST")
+                ).RemoteOperations(true)
+            .Fields(f => {
+                f.Add().DataField("ShipName").Area(PivotGridArea.Row).Visible(true);
+                f.Add().DataField("ShipAddress");
+                f.Add().DataField("OrderDate").Area(PivotGridArea.Column).Visible(true);
+                f.Add().DataField("Quantity").Area(PivotGridArea.Data).Visible(true).SummaryType(SummaryType.Sum);
+                f.Add().DataField("UnitPrice").SummaryType(SummaryType.Sum);
+            })).Render();
+}
